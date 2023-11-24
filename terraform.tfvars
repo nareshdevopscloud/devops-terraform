@@ -1,0 +1,1 @@
+mybucket = "test-hyd-delh"
