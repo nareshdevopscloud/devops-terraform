@@ -1,6 +1,6 @@
 There are multiple use cases where provider alias can be used:
 
-###### Creating resources in multiple AWS accounts in the same terraform module ####
+## Creating resources in multiple AWS accounts in the same terraform module ##
 Creating resources in different regions of the same AWS account.
 Creating resources in different regions of the different AWS accounts.
 
@@ -25,4 +25,3 @@ resource "aws_s3_bucket" "test2" {
   provider = aws.america
   
 }
-
