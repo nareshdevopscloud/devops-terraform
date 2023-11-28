@@ -27,6 +27,7 @@ output "instance_arn" {
   
 }
 
+
 # Terraform Output Commands
 terraform output
 terraform output ec2_publicdns
