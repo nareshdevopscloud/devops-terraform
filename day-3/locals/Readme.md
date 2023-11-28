@@ -1,51 +1,42 @@
 # Terraform Output Values
 
-## Step-01: Introduction
+##  Introduction
 
 -   Understand about Output Values and implement them
 -   Query outputs using  `terraform output`
 -   Understand about redacting secure attributes in output values
 -   Generate machine-readable output
 
+#after apply we can know output value for senisitive data by giving below command
+# refrence 
 
-# Create Resources
-terraform apply -auto-approve
+output "instance_public_ip" {
+    value = aws_instance.test.public_ip
+    sensitive = true
+}
 
-# Access Application
-http://<Public-IP>
-http://<Public-DNS>
-
-outputs)Step-03: Query Terraform Outputs
-
--   Terraform will load the project state in state file, so that using  `terraform output`  command we can query the state file.
+output "instance_id"{
+    value = aws_instance.test.id
+}
+output "instance_public_dns" {
+    value = aws_instance.test.public_dns
+  
+}
+output "instance_arn" {
+    value = aws_instance.test.arn
+  
+}
 
 # Terraform Output Commands
 terraform output
 terraform output ec2_publicdns
 
-Step-04: Output Values - Suppressing Sensitive Values in Output
+ Output Values - Suppressing Sensitive Values in Output
 
 -   We can redact the sensitive outputs using  `sensitve = true`  in output block
 -   This will only redact the cli output for terraform plan and apply
 -   When you query using  `terraform output`, you will be able to fetch exact values from  `terraform.tfstate`  files
 -   Add  `sensitve = true`  for output  `ec2_publicdns`
-
-# Attribute Reference - Create Public DNS URL with http:// appended
-output "ec2_publicdns" {
-  description = "Public DNS URL of an EC2 Instance"
-  value = "http://${aws_instance.my-ec2-vm.public_dns}"
-  sensitive = true
-}
-
--   Test the flow
-
-# Terraform Apply
-terraform apply -auto-approve
-Observation: You should see the value as sensitive
-
-# Query using terraform output
-terraform output ec2_publicdns
-
 
 
 # Generate machine-readable output
