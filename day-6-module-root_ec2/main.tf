@@ -7,13 +7,5 @@ resource "aws_instance" "test" {
     # security_groups = [aws_security_group.dev_sg.id]
     availability_zone = var.az_zone
     # user_data = file("filename")
-
-
-
-
-
-
-
-
     
 }
